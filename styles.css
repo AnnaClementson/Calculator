@@ -10,6 +10,15 @@ body {
     background: gray;
 }
 
+.container {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: 400px 200px;
+    grid-template-rows: 620px;    
+}
+
 .calculatorGrid {
     display: grid;
     justify-content: center;
@@ -60,4 +69,11 @@ body {
 .output .history {
     color : white;
     font-size: 2.5rem;
+}
+
+.history {
+    background: white;
+    color: blue;
+    text-align: center;
+    grid-template: 0;
 }

@@ -2,6 +2,7 @@ class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement) {
         this.previousOperandTextElement = previousOperandTextElement;
         this.currentOperandTextElement = currentOperandTextElement;
+        this.historyElement = historyElement;
         this.clear();
     }
 
@@ -60,6 +61,10 @@ class Calculator {
             default:
                 return;
         }
+        var newElem = document.createElement ("p");
+        newElem.innerText += `${this.previousOperand} ${this.operation} ${this.currentOperand} = ${computation}`;
+        this.historyElement.appendChild(newElem);
+
         this.currentOperand = computation;
         this.operation = undefined;
         this.previous = '';
@@ -76,7 +81,7 @@ class Calculator {
         } else {
             this.previousOperandTextElement.innerText = '';
         }
-        
+    
     }
 }
 
@@ -89,9 +94,10 @@ const previousButton = document.querySelector('[data-previous]')
 const allClearButton = document.querySelector('[data-all-clear]')
 const previousOperandTextElement = document.querySelector('[data-previous-operand]')
 const currentOperandTextElement = document.querySelector('[data-current-operand]')
+const historyElement = document.querySelector('[data-history]')
 
 //create a new class and pass everything into it
-const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
+const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement, historyElement);
 
 //Loop over all buttons and add event listener
 numberButtons.forEach(button => {
@@ -113,6 +119,7 @@ operationButtons.forEach(button => {
 equalsButton.addEventListener('click', button => {
     calculator.compute();
     calculator.updateDisplay();
+    calculator.clear();
 })
 
 //clear button
@@ -127,3 +134,4 @@ deleteButton.addEventListener('click', button => {
     calculator.delete();
     calculator.updateDisplay();
 })
+
