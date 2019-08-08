@@ -7,7 +7,7 @@
 body {
     padding: 0;
     margin: 0;
-    background: gray;
+    background:#dedede;
 }
 
 .container {
@@ -24,20 +24,20 @@ body {
     justify-content: center;
     align-content: center;
     min-height: 100vh;
-    grid-template-columns: repeat(4, 100px);
-    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+    grid-template-columns: repeat(5, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(6, 100px);
 }
 
 .calculatorGrid > button {
     cursor: pointer;
     font-size: 2rem;
-    border: 1px solid white;
+    border: 3px solid black;
     outline: none; 
-    background-color: rgb(255, 255, 255, .75);
+    background-color: #00007d;
 }
 
 .calculatorGrid > button:hover {
-    background-color: rgba(255, 255, 255, .9);
+    background-color:#000F9F;
 }
 
 .spanTwo {
@@ -46,7 +46,7 @@ body {
 
 .output {
     grid-column: 1 / -1;
-    background-color: rgba(0, 0, 0, .75);
+    background-color: black;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -54,8 +54,12 @@ body {
     padding: 10px;
     word-wrap: break-word;
     word-break: break-all;
+    padding-right: 130px;
 }
 
+.button {
+    color: white;
+}
 .output .previous-operand {
     color: rgba(255, 255, 255, .75);
     font-size: 1.5rem;
@@ -72,8 +76,9 @@ body {
 }
 
 .history {
-    background: white;
-    color: blue;
+    grid-row: span 5;
+    background: black;
+    color : white;
     text-align: center;
-    grid-template: 0;
+    padding-top: 10px;
 }

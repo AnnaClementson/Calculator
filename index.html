@@ -9,7 +9,6 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container">
     <div class="calculatorGrid">
         <div class="output">
             <div data-previous-operand class="previous-operand"></div>
@@ -18,6 +17,8 @@
     <button data-all-clear class="spanTwo button">AC</button>
     <button data-delete class="button">DEL</button>
     <button data-operation class="button">÷</button>
+    <div data-history class="history">
+    </div>
     <button data-number class="button">1</button>
     <button data-number class="button">2</button>
     <button data-number class="button">3</button>
@@ -33,9 +34,6 @@
     <button data-number class="button">.</button>
     <button data-number class="button">0</button>
     <button data-equals class="spanTwo button">=</button>
-    </div>
-    <div data-history class="history">
-        <p>History</p>
     </div>
     </div>
 </body>
