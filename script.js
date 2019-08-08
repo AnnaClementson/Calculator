@@ -12,10 +12,10 @@ class Calculator {
         this.previousOperand = '';
         this.operation = undefined;
     }
-    
+
     //delete single number using slice method
-    delete() { 
-        this.currentOperand = this.currentOperand.toString().slice(0,-1);
+    delete() {
+        this.currentOperand = this.currentOperand.toString().slice(0, -1);
     }
 
     //add number and only allow a single period
@@ -45,14 +45,14 @@ class Calculator {
         const prev = parseFloat(this.previousOperand);
         const current = parseFloat(this.currentOperand);
         if (isNaN(prev) || isNaN(current)) return;
-        switch(this.operation) {
+        switch (this.operation) {
             case '+':
                 computation = prev + current;
                 break;
             case '-':
                 computation = prev - current;
                 break;
-             case '*':
+            case '*':
                 computation = prev * current;
                 break;
             case '÷':
@@ -61,7 +61,7 @@ class Calculator {
             default:
                 return;
         }
-        var newElem = document.createElement ("p");
+        var newElem = document.createElement("p");
         newElem.innerText += `${this.previousOperand} ${this.operation} ${this.currentOperand} = ${computation}`;
         this.historyElement.appendChild(newElem);
 
@@ -74,27 +74,26 @@ class Calculator {
     //if operation is not null then show previous operand and operation
     //remove previous operand when calculated
     updateDisplay() {
-        this.currentOperandTextElement.innerText = this.currentOperand;    
+        this.currentOperandTextElement.innerText = this.currentOperand;
         if (this.operation != null) {
-            this.previousOperandTextElement.innerText = 
+            this.previousOperandTextElement.innerText =
                 `${this.previousOperand} ${this.operation}`;
         } else {
             this.previousOperandTextElement.innerText = '';
         }
-    
+
     }
 }
 
 //variables
-const numberButtons = document.querySelectorAll('[data-number]')
-const operationButtons = document.querySelectorAll('[data-operation]')
-const equalsButton = document.querySelector('[data-equals]')
-const deleteButton = document.querySelector('[data-delete]')
-const previousButton = document.querySelector('[data-previous]')
-const allClearButton = document.querySelector('[data-all-clear]')
-const previousOperandTextElement = document.querySelector('[data-previous-operand]')
-const currentOperandTextElement = document.querySelector('[data-current-operand]')
-const historyElement = document.querySelector('[data-history]')
+const numberButtons = document.querySelectorAll('[data-number]');
+const operationButtons = document.querySelectorAll('[data-operation]');
+const equalsButton = document.querySelector('[data-equals]');
+const deleteButton = document.querySelector('[data-delete]');
+const allClearButton = document.querySelector('[data-all-clear]');
+const previousOperandTextElement = document.querySelector('[data-previous-operand]');
+const currentOperandTextElement = document.querySelector('[data-current-operand]');
+const historyElement = document.querySelector('[data-history]');
 
 //create a new class and pass everything into it
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement, historyElement);
@@ -104,34 +103,33 @@ numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText);
         calculator.updateDisplay();
-    })
-})
+    });
+});
 
 //Loop over operation buttons and add event listener
 operationButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.chooseOperation(button.innerText);
         calculator.updateDisplay();
-    })
-})
+    });
+});
 
 //equals button
 equalsButton.addEventListener('click', button => {
     calculator.compute();
     calculator.updateDisplay();
     calculator.clear();
-})
+});
 
 //clear button
 allClearButton.addEventListener('click', button => {
     calculator.clear();
     calculator.updateDisplay();
-  })
-  
+});
+
 
 //delete button
 deleteButton.addEventListener('click', button => {
     calculator.delete();
     calculator.updateDisplay();
-})
-
+});
