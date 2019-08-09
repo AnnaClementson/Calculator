@@ -1,5 +1,5 @@
 class Calculator {
-    constructor(previousOperandTextElement, currentOperandTextElement) {
+    constructor(previousOperandTextElement, currentOperandTextElement, historyElement) {
         this.previousOperandTextElement = previousOperandTextElement;
         this.currentOperandTextElement = currentOperandTextElement;
         this.historyElement = historyElement;
